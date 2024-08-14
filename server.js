@@ -26,16 +26,3 @@ fastify.post('/generate-security-checklist', async (request, reply) => {
   };
   
   start();
-  
-  // Handle graceful shutdown
-  process.on('SIGINT', async () => {
-    console.log('SIGINT signal received: closing MongoDB connection');
-    await closeDbConnection();
-    process.exit(0);
-  });
-  
-  process.on('SIGTERM', async () => {
-    console.log('SIGTERM signal received: closing MongoDB connection');
-    await closeDbConnection();
-    process.exit(0);
-  });
