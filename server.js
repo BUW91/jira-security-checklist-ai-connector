@@ -4,8 +4,6 @@ const { requestSecurityChecklist } = require('./gpt/requestSecurityChecklist.js'
 fastify.post('/generate-security-checklist', async (request, reply) => {
     const { summary, description } = request.body;
     try{
-        console.log('---description---')
-        console.log(description)
       const checklist = await requestSecurityChecklist(summary, description);
       reply.send(checklist);
     }
