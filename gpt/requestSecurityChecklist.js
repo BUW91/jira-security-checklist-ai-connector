@@ -5,9 +5,12 @@ const openai = new OpenAI();
 
 async function requestSecurityChecklist(summary, description) {
   const readableDescription = convertToReadableContent(description)
+  console.log('---------READABLE-------')
+  console.log(readableDescription)
   const summaryAndDescription = summary + '\n' + readableDescription
-
+  console.log('summmm')
   console.log(summaryAndDescription)
+
   const completion = await openai.chat.completions.create({
     messages: [
       {
