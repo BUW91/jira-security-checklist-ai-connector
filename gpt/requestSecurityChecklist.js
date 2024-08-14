@@ -26,10 +26,10 @@ async function requestSecurityChecklist(summary, description) {
     response_format: { "type": "json_object" }
   });
 
-  console.log(JSON.parse(completion.choices[0].message))
+  console.log(completion.choices[0].message)
   const parsedResponse = JSON.parse(completion.choices[0].message.content)
   console.log(parsedResponse)
-  // return parsedResponse.tc
+  return parsedResponse
 }
 
 module.exports = {
