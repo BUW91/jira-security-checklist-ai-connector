@@ -21,7 +21,7 @@ async function requestSecurityChecklist(summary, description) {
           - Focus questions on OWASP security principles and tailor them closely to the specific details of the provided Jira story/task/ticket.
           - DO NOT include examples, filler words, or phrases such as "like," "for example," or "e.g."
           - DO NOT include questions formulated as 'Is ... tested'
-          - Respond ONLY in the following JSON format, no additional text: [{label: <item>}, {label: <item>}, ... }]`
+          - Respond ONLY in the following JSON format, no additional text: {checklist: [{label: <item>}, {label: <item>}, ... }]}`
       },
       { role: "user", content: summaryAndDescription }
     ],
@@ -32,7 +32,7 @@ async function requestSecurityChecklist(summary, description) {
   console.log(completion.choices[0].message)
   const parsedResponse = JSON.parse(completion.choices[0].message.content)
   console.log(parsedResponse)
-  return parsedResponse
+  return parsedResponse.checklist
 }
 
 module.exports = {
