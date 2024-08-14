@@ -1,5 +1,5 @@
 const fastify = require('fastify')({ logger: true });
-const { requestSecurityChecklist } = require('./gpt/requestSecurityChecklist');
+const { requestSecurityChecklist } = require('./gpt/requestSecurityChecklist.js');
 
 fastify.post('/generate-security-checklist', async (request, reply) => {
     const { summary, description } = request.body;
