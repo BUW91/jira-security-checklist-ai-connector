@@ -19,6 +19,7 @@ async function requestSecurityChecklist(summary, description) {
           - DO NOT include examples, filler words, or phrases such as "like," "for example," or "e.g."
           - DO NOT include questions formulated as 'Is ... tested'
           - Respond ONLY in the following JSON format, no additional text: [{label: <item>}, {label: <item>}, ... }]`
+      },
       { role: "user", content: summaryAndDescription }
     ],
     model: "gpt-4o-mini",
