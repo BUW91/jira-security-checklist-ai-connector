@@ -4,12 +4,16 @@ const { convertToReadableContent } = require('./convertToReadable');
 const openai = new OpenAI();
 
 async function requestSecurityChecklist(summary, description) {
-  const readableDescription = convertToReadableContent(description)
-  console.log('---------READABLE-------')
-  console.log(readableDescription)
+  let readableDescription = ''
+  try{
+    readableDescription = convertToReadableContent(description)
+
+  }
+  catch(e){
+    console.log('Could not process description to readable', e)
+    console.log(description)
+  }
   const summaryAndDescription = summary + '\n' + readableDescription
-  console.log('summmm')
-  console.log(summaryAndDescription)
 
   const completion = await openai.chat.completions.create({
     messages: [
